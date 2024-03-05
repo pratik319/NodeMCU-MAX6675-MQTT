@@ -1,0 +1,467 @@
+[
+    {
+        "id": "51c70dbf8c7623b4",
+        "type": "mqtt in",
+        "z": "5d89b4f2730a9fb7",
+        "name": "broker",
+        "topic": "sensor/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4862e722ea7d7777",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "ec4fedb12a1b6344",
+                "234260f9c91a8533",
+                "98c282e23cacebd1",
+                "97cfb58949202637"
+            ]
+        ]
+    },
+    {
+        "id": "ec4fedb12a1b6344",
+        "type": "ui_chart",
+        "z": "5d89b4f2730a9fb7",
+        "name": "",
+        "group": "53c64bc3b9eb6e30",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#cd1313",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 690,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "234260f9c91a8533",
+        "type": "debug",
+        "z": "5d89b4f2730a9fb7",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "98c282e23cacebd1",
+        "type": "ui_chart",
+        "z": "5d89b4f2730a9fb7",
+        "name": "",
+        "group": "53c64bc3b9eb6e30",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "30 Min ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "30",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 690,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "97cfb58949202637",
+        "type": "function",
+        "z": "5d89b4f2730a9fb7",
+        "name": "function",
+        "func": "msg.payload = String(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 340,
+        "wires": [
+            [
+                "002ced3f6e9ec7f0"
+            ]
+        ]
+    },
+    {
+        "id": "9b856f044e0d13ed",
+        "type": "debug",
+        "z": "5d89b4f2730a9fb7",
+        "name": "debug 12",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "002ced3f6e9ec7f0",
+        "type": "gate",
+        "z": "5d89b4f2730a9fb7",
+        "name": "",
+        "controlTopic": "control",
+        "defaultState": "closed",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "statusCmd": "status",
+        "persist": false,
+        "storeName": "memory",
+        "x": 690,
+        "y": 340,
+        "wires": [
+            [
+                "9aa238b579954703"
+            ]
+        ]
+    },
+    {
+        "id": "812be1668fa3896e",
+        "type": "debug",
+        "z": "5d89b4f2730a9fb7",
+        "name": "debug 13",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "16cfb801f23d7f6d",
+        "type": "group",
+        "z": "5d89b4f2730a9fb7",
+        "name": "Write csv file",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "1dd2df6510b9b297",
+            "1d304131ea766b7f",
+            "9aa238b579954703"
+        ],
+        "x": 774,
+        "y": 299,
+        "w": 452,
+        "h": 82
+    },
+    {
+        "id": "1dd2df6510b9b297",
+        "type": "file",
+        "z": "5d89b4f2730a9fb7",
+        "g": "16cfb801f23d7f6d",
+        "name": "File",
+        "filename": "C:\\Users\\AML\\Desktop\\database\\new\\Tempdata.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1150,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d304131ea766b7f",
+        "type": "csv",
+        "z": "5d89b4f2730a9fb7",
+        "g": "16cfb801f23d7f6d",
+        "name": "csv file",
+        "sep": ",",
+        "hdrin": false,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "Data",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": false,
+        "x": 1010,
+        "y": 340,
+        "wires": [
+            [
+                "1dd2df6510b9b297",
+                "9b856f044e0d13ed"
+            ]
+        ]
+    },
+    {
+        "id": "9aa238b579954703",
+        "type": "fastcsv",
+        "z": "5d89b4f2730a9fb7",
+        "g": "16cfb801f23d7f6d",
+        "name": "fastcsv",
+        "headers": true,
+        "headerstr": "Data",
+        "ignoreEmpty": true,
+        "discardUnmappedColumns": true,
+        "strictColumnHandling": false,
+        "delimiter": ",",
+        "quote": "\"",
+        "escape": "\"",
+        "comment": "#",
+        "ltrim": false,
+        "rtrim": false,
+        "rowDelimiter": "\\n",
+        "includeEndRowDelimiter": false,
+        "quoteHeaders": true,
+        "quoteColumns": false,
+        "x": 860,
+        "y": 340,
+        "wires": [
+            [
+                "1d304131ea766b7f",
+                "812be1668fa3896e"
+            ]
+        ]
+    },
+    {
+        "id": "4c7973ff3e455c78",
+        "type": "group",
+        "z": "5d89b4f2730a9fb7",
+        "name": "Start/Stop",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "b5c26386c09d06a6",
+            "d088695b33b242a1",
+            "adaa87ffbfd796cf"
+        ],
+        "x": 454,
+        "y": 399,
+        "w": 312,
+        "h": 122
+    },
+    {
+        "id": "b5c26386c09d06a6",
+        "type": "ui_button",
+        "z": "5d89b4f2730a9fb7",
+        "g": "4c7973ff3e455c78",
+        "name": "On",
+        "group": "9475f777086e9a6b",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Recording",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "open",
+        "payloadType": "str",
+        "topic": "control",
+        "topicType": "str",
+        "x": 530,
+        "y": 480,
+        "wires": [
+            [
+                "002ced3f6e9ec7f0",
+                "adaa87ffbfd796cf"
+            ]
+        ]
+    },
+    {
+        "id": "d088695b33b242a1",
+        "type": "ui_button",
+        "z": "5d89b4f2730a9fb7",
+        "g": "4c7973ff3e455c78",
+        "name": "Off",
+        "group": "9475f777086e9a6b",
+        "order": 11,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "close",
+        "payloadType": "str",
+        "topic": "control",
+        "topicType": "str",
+        "x": 530,
+        "y": 440,
+        "wires": [
+            [
+                "002ced3f6e9ec7f0",
+                "adaa87ffbfd796cf"
+            ]
+        ]
+    },
+    {
+        "id": "adaa87ffbfd796cf",
+        "type": "ui_led",
+        "z": "5d89b4f2730a9fb7",
+        "g": "4c7973ff3e455c78",
+        "order": 9,
+        "group": "9475f777086e9a6b",
+        "width": "0",
+        "height": "0",
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "open",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "close",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9475f777086e9a6b",
+        "type": "ui_group",
+        "name": "Aqusition Control",
+        "tab": "376a600195aa745c",
+        "order": 2,
+        "disp": true,
+        "width": "4",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "376a600195aa745c",
+        "type": "ui_tab",
+        "name": "Temperature Monitoring & Data Aquisition System",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "4862e722ea7d7777",
+        "type": "mqtt-broker",
+        "name": "MQTT",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "53c64bc3b9eb6e30",
+        "type": "ui_group",
+        "name": "Tempreture",
+        "tab": "376a600195aa745c",
+        "order": 1,
+        "disp": true,
+        "width": "13",
+        "collapse": false,
+        "className": ""
+    }
+]
